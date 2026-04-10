@@ -153,6 +153,8 @@ This section details the layout blueprints for UI/UX designers to translate dire
   - Floating label input fields for Email and Password.
   - Subtly glowing primary Submit Button.
 * **UX Behavior:** Input fields highlighted with an Indigo border on focus. Button shows a spinning SVG loader upon click, disabling input temporarily.
+<img width="1440" height="901" alt="TaskMatrix — Login" src="https://github.com/user-attachments/assets/3201fead-c2ab-400a-914c-99d18727b35f" />
+
 
 ### Screen 2: Dashboard Overview
 * **Layout Structure:**
@@ -163,6 +165,8 @@ This section details the layout blueprints for UI/UX designers to translate dire
   - **Greeting Card:** "Good morning, Jane" with quick stats (3 tasks due today).
   - **Project Overview Cards:** Glassmorphic cards highlighting progress bars, active team member avatars overlapping (facepile).
 * **UX Behavior:** Sidebar links have a smooth hover background transition (`transition-colors duration-200`). Hovering over the facepile expands avatars slightly.
+<img width="1440" height="901" alt="TaskMatrix Dashboard" src="https://github.com/user-attachments/assets/d865d536-1909-467e-bff3-62e633a53895" />
+
 
 ### Screen 3: Kanban Board
 * **Layout Structure:** Header with Project Title and "Filter/Sort" buttons. Horizontal scrollable container for Columns.
@@ -173,6 +177,8 @@ This section details the layout blueprints for UI/UX designers to translate dire
 * **UX Behavior:** 
   - **Hover:** Elevating the task card slightly (`hover:-translate-y-1 shadow-lg`).
   - **Drag-Drop:** Card tilts 3 degrees when picked up. Empty slot indicator outlines where the card will land. Column background highlights when hovered over with a card.
+  <img width="1440" height="900" alt="Project Overview - Kanban Board" src="https://github.com/user-attachments/assets/776fd3b5-c305-483d-9af3-6350e130c9f6" />
+
 
 ---
 
