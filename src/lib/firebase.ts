@@ -1,5 +1,6 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "dummy_api_key",
@@ -13,3 +14,4 @@ const firebaseConfig = {
 // Next.js SSR Failsafe: Only initialize if we have actual keys or are on the client
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 export const auth = getAuth(app);
+export const db = getFirestore(app);
