@@ -58,7 +58,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-slate-50">
-      <div className="w-full max-w-md p-8 bg-white shadow-md rounded border border-gray-100">
+      <div className="w-full max-w-md p-8 bg-white shadow-md rounded border border-gray-100 text-slate-900">
         <h1 className="text-2xl font-bold mb-6 text-center text-indigo-600">TaskMatrix Login</h1>
         
         {error && (
@@ -75,7 +75,7 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-slate-900 placeholder:text-slate-400"
               placeholder="you@example.com"
             />
           </div>
@@ -87,7 +87,7 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-slate-900 placeholder:text-slate-400"
               placeholder="••••••••"
             />
           </div>
@@ -121,9 +121,9 @@ export default function LoginPage() {
           Google
         </button>
 
-        <div className="mt-6 text-center text-sm">
+        <div className="mt-6 text-center text-sm text-slate-600">
           Don&apos;t have an account?{" "}
-          <Link href="/register" className="text-indigo-600 hover:underline">
+          <Link href="/register" className="text-indigo-600 hover:underline hover:text-indigo-700">
             Register here
           </Link>
         </div>
