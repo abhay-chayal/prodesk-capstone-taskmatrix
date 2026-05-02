@@ -16,11 +16,39 @@ const COLORS = {
   "done": "#10b981",        // emerald-500
 };
 
+// Skeleton loader for the chart
+function ChartSkeleton() {
+  return (
+    <div className="h-72 w-full animate-pulse">
+      <div className="h-5 w-32 rounded-md bg-slate-200 mx-auto mb-6" />
+      <div className="flex items-center justify-center h-48">
+        <div className="h-40 w-40 rounded-full border-8 border-slate-200 relative">
+          <div className="absolute inset-3 rounded-full bg-white" />
+        </div>
+      </div>
+      <div className="flex items-center justify-center space-x-6 mt-4">
+        <div className="flex items-center space-x-1.5">
+          <div className="h-3 w-3 rounded-full bg-slate-200" />
+          <div className="h-3 w-12 rounded bg-slate-200" />
+        </div>
+        <div className="flex items-center space-x-1.5">
+          <div className="h-3 w-3 rounded-full bg-slate-200" />
+          <div className="h-3 w-16 rounded bg-slate-200" />
+        </div>
+        <div className="flex items-center space-x-1.5">
+          <div className="h-3 w-3 rounded-full bg-slate-200" />
+          <div className="h-3 w-10 rounded bg-slate-200" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function TaskChart() {
   const { tasks, loadingTasks } = useTaskStore();
 
   if (loadingTasks) {
-    return <div className="h-64 flex items-center justify-center text-slate-500">Loading chart...</div>;
+    return <ChartSkeleton />;
   }
 
   if (tasks.length === 0) {

@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/userStore";
 import { useTaskStore, Task } from "@/store/taskStore";
-import { auth, db } from "@/lib/firebase";
-import { signOut } from "firebase/auth";
+import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import TaskList from "@/components/TaskList";
 import TaskForm from "@/components/TaskForm";
 import TaskChart from "@/components/TaskChart";
+import Navbar from "@/components/Navbar";
 import { PlusIcon } from "lucide-react";
 
 export default function DashboardPage() {
@@ -68,15 +68,6 @@ export default function DashboardPage() {
     }
   }, [user, isAuthenticated, setTasks, setLoadingTasks]);
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      router.push("/login");
-    } catch (error) {
-      console.error("Failed to log out", error);
-    }
-  };
-
   if (authLoading || !isAuthenticated) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-slate-50">
@@ -97,9 +88,9 @@ export default function DashboardPage() {
             <p className="text-sm">{fetchError}</p>
           </div>
           <p className="text-slate-600 mb-6 text-sm">
-            Firebase Auth works, but Firestore cannot be reached. Please ensure you have clicked "Create Database" under Firestore Database in your Firebase Console.
+            Firebase Auth works, but Firestore cannot be reached. Please ensure you have clicked &quot;Create Database&quot; under Firestore Database in your Firebase Console.
           </p>
-          <button onClick={() => window.location.reload()} className="bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-700">
+          <button onClick={() => window.location.reload()} className="bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-700 transition-colors">
             Refresh Page
           </button>
         </div>
@@ -108,36 +99,23 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-8">
-      <div className="mx-auto max-w-6xl">
+    <div className="min-h-screen bg-slate-50 overflow-x-hidden">
+      <div className="mx-auto max-w-6xl p-4 md:p-8">
         {/* Navigation */}
-        <nav className="mb-8 flex items-center justify-between rounded-lg bg-white p-4 shadow-sm">
-          <h1 className="text-2xl font-bold text-indigo-600">TaskMatrix</h1>
-          <div className="flex items-center space-x-4">
-            <span className="hidden sm:inline-block text-sm text-slate-600">
-              {user?.name || user?.email}
-            </span>
-            <button
-              onClick={handleLogout}
-              className="rounded bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-200"
-            >
-              Logout
-            </button>
-          </div>
-        </nav>
+        <Navbar />
 
         {/* Dashboard Content */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
            {/* Left/Top Column: Tasks List */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center justify-between rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl bg-white p-5 sm:p-6 shadow-sm border border-slate-100">
               <div>
                 <h2 className="text-xl font-bold text-slate-800">Your Tasks</h2>
                 <p className="text-sm text-slate-500 mt-1">Manage and organize your personal workload.</p>
               </div>
               <button
                 onClick={() => setShowAddModal(true)}
-                className="flex items-center space-x-2 rounded-lg bg-indigo-600 px-4 py-2 text-white shadow hover:bg-indigo-700 transition-colors"
+                className="w-full sm:w-auto flex items-center justify-center space-x-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-white shadow-sm hover:bg-indigo-700 hover:shadow-md transition-all duration-200 active:scale-95"
               >
                 <PlusIcon className="h-5 w-5" />
                 <span>Add Task</span>
