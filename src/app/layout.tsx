@@ -15,8 +15,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TaskMatrix MVP",
-  description: "Minimal Viable Product for TaskMatrix",
+  title: {
+    default: "TaskMatrix | Intelligent Project Management",
+    template: "%s | TaskMatrix"
+  },
+  description: "A professional, AI-powered task management and analytics platform.",
+  keywords: ["Task Management", "Productivity", "AI", "Project Management", "Kanban", "Analytics"],
+  openGraph: {
+    title: "TaskMatrix | Intelligent Project Management",
+    description: "A professional, AI-powered task management and analytics platform.",
+    url: "https://taskmatrix.vercel.app",
+    siteName: "TaskMatrix",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TaskMatrix | Intelligent Project Management",
+    description: "A professional, AI-powered task management and analytics platform.",
+  }
 };
 
 export default function RootLayout({
